@@ -1,0 +1,102 @@
+﻿<Page x:Class="CourseWork.Page1"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CourseWork"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Page1">
+
+    <Grid Margin="0,0,0,-0.4">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFE2F3D9" Offset="0"/>
+                <GradientStop Color="#FF8DD36D" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Button BorderThickness="0" Content="Регистрация" HorizontalAlignment="Left" Margin="277,210,0,0" VerticalAlignment="Top" Width="120"  Height="32" Click="Button_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF7FAF4" Offset="0"/>
+                    <GradientStop Color="#FF6CB64B" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+
+        </Button>
+        <Button BorderThickness="0" Content="Войти" HorizontalAlignment="Left" Margin="397,210,0,0" VerticalAlignment="Top" Width="119" Height="32" Click="Button_log_in">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF7FAF4" Offset="0"/>
+                    <GradientStop Color="#FF6CB64B" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <TextBox BorderThickness="2" x:Name="name" FontSize="20" HorizontalAlignment="Left" Height="30" Margin="277,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="239" BorderBrush="#FFCEEBBF">
+            <TextBox.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FFCBEABB" Offset="1"/>
+                    <GradientStop Color="White" Offset="0.788"/>
+                </RadialGradientBrush>
+            </TextBox.Background>
+        </TextBox>
+        <TextBlock HorizontalAlignment="Left" Height="16" Margin="277,141,0,0" TextWrapping="Wrap" Text="Пароль" VerticalAlignment="Top" Width="64"/>
+        <TextBlock HorizontalAlignment="Left" Height="16" Margin="277,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="81"><Run Text="Логин"/><Run Text=" (Имя)"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="27" Margin="320,18,0,0" TextWrapping="Wrap" Text="Аутентификация" VerticalAlignment="Top" Width="156" FontSize="18" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Height="28" Margin="174,412,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="451"><Run Text="Приложение было создано Веревкиным Сергеем ПКС-304 в далеком 2021 году"/></TextBlock>
+        <TextBlock x:Name="Error_password" Visibility="Hidden" HorizontalAlignment="Left" Margin="530,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" Height="30" Foreground="#FFDC1313" FontSize="18"><Run Text="неверный пароль"/></TextBlock>
+        <TextBlock x:Name="Error_name" Visibility="Hidden" HorizontalAlignment="Left" Margin="530,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" Height="30" Foreground="#FFDC1313" FontSize="18"><Run Text="неверный логин"/></TextBlock>
+        <PasswordBox x:Name="password" BorderThickness="2" HorizontalAlignment="Left" Margin="277,157,0,0" VerticalAlignment="Top" Height="30" Width="239" FontSize="20" BorderBrush="#FFC0E6AE">
+            <PasswordBox.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FFC2E7B0" Offset="1"/>
+                    <GradientStop Color="White" Offset="0.81"/>
+                </RadialGradientBrush>
+            </PasswordBox.Background>
+        </PasswordBox>
+        <TextBlock HorizontalAlignment="Left" Height="38" Margin="145,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500"><Run Text="Введите логин и пароль чтобы войти в аккаунт или создайте "/><Run Text="его "/><Run Text="если "/><Run Text="вы "/><Run Text="у "/><Run Text="н"/><Run Text="ас "/><Run Text="впервые"/><Run Text="."/></TextBlock>
+        
+        <Button BorderThickness="0" Content="Забыл логин или пароль" HorizontalAlignment="Left" Margin="277,243,0,0" VerticalAlignment="Top" Width="239"  Height="32" Click="Forgot_My_Data_Button">
+            
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <!--Border x:Name="buttonBorder" CornerRadius="25"-->
+                    <Border x:Name="buttonBorder" 
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Background="{TemplateBinding Background}"
+                        Height="{TemplateBinding Height}"
+                        Width="{TemplateBinding Width}" >
+                        <ContentControl Margin="{TemplateBinding Padding}"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Content="{TemplateBinding Content}" />
+                    </Border>
+                    
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="FontWeight" Value="Bold" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter TargetName="buttonBorder" Property="Background" Value="Azure" />
+                            <Setter TargetName="buttonBorder" Property="BorderBrush" Value="DarkBlue" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="Gray"/>
+                            <Setter TargetName="buttonBorder" Property="Background" Value="#222222"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+            
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF7FAF4"/>
+                    <GradientStop Color="#FF6CB64B" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            
+        </Button>
+
+    </Grid>
+</Page>

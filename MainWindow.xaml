@@ -1,0 +1,38 @@
+﻿<Window x:Class="CourseWork.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CourseWork"
+        mc:Ignorable="d"
+        Title="Звездный Подорожничек" Height="550" Width="800"
+        Icon="Resources/MyIcon.png"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Rectangle Grid.Column="0" Grid.Row="0" Fill="#FFA5D774"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="340,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112"><Run Text="Сеть дорогих аптек"/></TextBlock>
+        <TextBlock FontSize="34" HorizontalAlignment="Left" Margin="178,-4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="49" Width="427" Grid.RowSpan="2"><Run Text="Звездный подорожничек"/></TextBlock>
+        <Button BorderThickness="0" Name="Back_button" FontSize="12" Content="Назад" HorizontalAlignment="Left" VerticalAlignment="Top" Width="84" Height="41" Click="Back" Margin="6,4,0,0" Foreground="Black" BorderBrush="Black">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="Resources/sheet.png"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/sheet.png"/>
+            </Button.Background>
+        </Button>
+
+        <Frame ContentRendered="Main_ContentRendered" NavigationUIVisibility="Hidden" Name="MainFrame" Grid.Row="1" Grid.Column="0"/>
+
+    </Grid>
+</Window>
