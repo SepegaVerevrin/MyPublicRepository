@@ -1,0 +1,19 @@
+﻿<Page x:Class="CourseWork.Recovery"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CourseWork"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Recovery">
+
+    <Grid Background="#FFA0C29A">
+        <TextBlock HorizontalAlignment="Left" Height="27" Margin="263,17,0,0" TextWrapping="Wrap" Text="Восстановление логина и пароля" VerticalAlignment="Top" Width="312" FontSize="18" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Height="27" Margin="307,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" Text="Пожалуйста введите свою почту"/>
+
+        <TextBlock HorizontalAlignment="Left" Height="16" Margin="286,81,0,0" TextWrapping="Wrap" Text="Почта" VerticalAlignment="Top" Width="64"/>
+        <TextBox x:Name="mail" FontSize="20" HorizontalAlignment="Left" Height="30" Margin="286,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="239"/>
+
+    </Grid>
+</Page>

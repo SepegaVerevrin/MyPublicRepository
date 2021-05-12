@@ -72,6 +72,9 @@
       <DependentUpon>Admin_UsersStat.xaml</DependentUpon>
     </Compile>
     <Compile Include="Manager.cs" />
+    <Compile Include="Recovery.xaml.cs">
+      <DependentUpon>Recovery.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Registering.xaml.cs">
       <DependentUpon>Registering.xaml</DependentUpon>
     </Compile>
@@ -114,6 +117,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Page1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Recovery.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

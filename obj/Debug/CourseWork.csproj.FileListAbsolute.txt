@@ -32,3 +32,5 @@ C:\Users\Sergo\Desktop\Знания\III курс\6СЕМЕСТР\Ларионо�
 C:\Users\Sergo\Desktop\Знания\III курс\6СЕМЕСТР\Ларионова0202\Курсовая\CourseWork\obj\Debug\Admin_Goods_Add.g.cs
 C:\Users\Sergo\Desktop\Знания\III курс\6СЕМЕСТР\Ларионова0202\Курсовая\CourseWork\obj\Debug\Admin_Goods_Add.baml
 C:\Users\Sergo\Desktop\Знания\III курс\6СЕМЕСТР\Ларионова0202\Курсовая\CourseWork\obj\Debug\CourseWork.csproj.ResolveComReference.cache
+C:\Users\Sergo\Desktop\Знания\III курс\6СЕМЕСТР\Ларионова0202\Курсовая\CourseWork\obj\Debug\Recovery.g.cs
+C:\Users\Sergo\Desktop\Знания\III курс\6СЕМЕСТР\Ларионова0202\Курсовая\CourseWork\obj\Debug\Recovery.baml

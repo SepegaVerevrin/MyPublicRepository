@@ -92,7 +92,6 @@ namespace CourseWork {
 
             if (err == 0) {
 
-
                 /*---------------------------by the name we get the mail--------------------------*/
                 sqlExpression = "SELECT TOP (1) Client_id FROM clients WHERE name = @name_value";
                 command = new SqlCommand(sqlExpression, connection);
@@ -109,9 +108,8 @@ namespace CourseWork {
                     Error_name.Visibility = Visibility.Hidden;
                     err = -1;
                 }
-
-
                 connection.Close();
+   
 
                 if (err == 0) {
 
@@ -147,38 +145,6 @@ namespace CourseWork {
 
                     connection.Close();
 
-                    /*
-                                        if (err == 0) {
-
-                                            connection.Open();
-
-                                            *//*-----------------------------authorization----------------------------------*//*
-                                            sqlExpression = "SELECT * FROM  Clients WHERE name=@name_value AND password=@password_value";
-                                            command = new SqlCommand(sqlExpression, connection);
-                                            name_param = new SqlParameter("@name_value", name.Text); command.Parameters.Add(name_param);
-                                            password_param = new SqlParameter("@password_value", GetMD5Hash(password.Password)); command.Parameters.Add(password_param);
-                                            command.ExecuteNonQuery();
-
-                                            reader = command.ExecuteReader();
-
-                                            if (reader.HasRows) {
-                                                reader.Read();
-                                                string type = reader.GetString(2);
-                                                if (type == "user") {
-                                                    Manager.MainFrame.Navigate(new User(client_id));
-                                                } else if (type == "admin") {
-                                                    Manager.MainFrame.Navigate(new Admin(client_id));
-                                                }
-
-                                                reader.Close();
-                                            }
-                                            connection.Close();
-
-                                            Error_name.Visibility = Visibility.Hidden;
-                                            Error_password.Visibility = Visibility.Hidden;
-                                        }
-                    */
-
                 } else {
                     Error_name.Visibility = Visibility.Visible;
                     Error_password.Visibility = Visibility.Visible;
@@ -188,6 +154,7 @@ namespace CourseWork {
 
         private void Forgot_My_Data_Button(object sender, RoutedEventArgs e) {
             MessageBox.Show("В разработке");
+            Manager.MainFrame.Navigate(new Recovery());
         }
     }
 }

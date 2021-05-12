@@ -23,7 +23,6 @@ using Microsoft.Win32;
 using Word = Microsoft.Office.Interop.Word;
 using System.Reflection;
 
-
 namespace CourseWork {
 
 
@@ -49,7 +48,7 @@ namespace CourseWork {
             public string price { get; set; }
         }
 
-        public float final_price;
+        public double final_price;
         public static string tmp { get; set; }
 
 
@@ -77,12 +76,14 @@ namespace CourseWork {
                     while (reader.Read()) {
                         price_of_goods og = new price_of_goods();
                         og.price = reader.GetValue(2).ToString();
-                        final_price += float.Parse(og.price);
+                        final_price += double.Parse(og.price);
+
+
                     }
                 }
                 reader.Close();
 
-                Final_price_textblock.Text = final_price.ToString();
+                Final_price_textblock.Text = String.Format("{0:C}", final_price.ToString() + " руб");
 
 
                 sqlExpression = "SELECT dbo.basket.product_id, dbo.basket.count_goods, dbo.Goods.product_name, dbo.Goods.image, dbo.Goods.price FROM dbo.Basket INNER JOIN dbo.Goods ON dbo.basket.product_id = dbo.Goods.product_id WHERE client_id = @client_id_value";
@@ -273,6 +274,8 @@ namespace CourseWork {
         private void Operation_Add_Button(object sender, RoutedEventArgs e) {
             InitializeComponent();
             string client_id = tmp; // получаем код клиента
+            string current_time = "";
+            
             string sqlExpression;
             SqlCommand command;
             SqlParameter product_id_param;
@@ -283,6 +286,9 @@ namespace CourseWork {
             int res = 0;
 
             try {
+
+                
+
                 SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-52L8N5J\SQLEXPRESS02;;Initial Catalog=Pharmacy;" + "Integrated Security=True;Connect Timeout=15;Encrypt=False;" + "TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
                 connection.Open();
 
@@ -320,7 +326,7 @@ namespace CourseWork {
                     reader = command.ExecuteReader();
                     if (reader.HasRows) {
 
-                        string current_time = DateTime.Now.ToString("yyyy:dd:M:HH:mm:ss:fffffff");
+                        current_time = DateTime.Now.ToString("yyyy:dd:M:HH:mm:ss:fffffff");
 
                         reader.Close();
 
@@ -387,37 +393,28 @@ namespace CourseWork {
 
                     Write_Admin_Basket(client_id);
 
-                    //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-----------------------------------
-                    
-                    Word.Document doc = null; // Создаём объект документа
                     try {
+                         
+                        StreamWriter p = new StreamWriter("test.txt", append: true);
 
-                        Word.Application app = new Word.Application();  // Создаём объект приложения                     
-                        //string source = @"C:\Users\Sergo\Desktop\Знания\III курс\6СЕМЕСТР\Ларионова0202\Курсовая\CourseWork\bin\Debug\Test.docx";   // Путь до шаблона документа                      
-                        string source = @"Test.docx";   // Путь до шаблона документа                      
-                        doc = app.Documents.Open(source);  // Открываем
-                        doc.Activate();
+                        p.WriteLine(" " + current_time + "  " + client_id);
 
-                        /*Word.Bookmarks wBookmarks = doc.Bookmarks;
-                        Word.Range wRange;
-                        int i = 0;
-                        string[] data = new string[3] { "27", "Alex", "Gulynin" };
-                        foreach (Word.Bookmark mark in wBookmarks) {
+/*
+  "Звездный Подорожничек"
+ Чек Дата 2021:11:5:19:45:20 
+ Аскорбинка ... 24 руб Х 10 шт
+   Стоимость ... 240 руб
+ ИТОГ = 240 руб.
+*/
 
-                            wRange = mark.Range;
-                            wRange.Text = data[i];
-                            i++;
-                        }*/
+                        p.Close();
 
-                        doc.Close(); // Закрываем документ
-                        doc = null;
 
                     } catch (Exception ex) {
                         MessageBox.Show("Во время выполнения произошла ошибка!", ex.Message);
                     }
-                    /////////////////////////////////---------------------------------------
 
-                    MessageBox.Show("Поздравляю! Вы купили");
+                    MessageBox.Show("Поздравляю! Вы совершили оплату. Ваш чек сохранен в файл");
 
                 } else MessageBox.Show("Тут слишком пусто");
 
@@ -427,5 +424,17 @@ namespace CourseWork {
             }
 
         }
+
+
+        // Кнопка деталей товара
+        private void Details_Button(object sender, RoutedEventArgs e) {
+
+            Button button = sender as Button; // !!!          
+            basket_goods good = button.DataContext as basket_goods; // !!!
+
+            Manager.MainFrame.Navigate(new User_Product_Details(good.product_id));
+
+        }
     }
+
 }
